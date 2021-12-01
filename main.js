@@ -5,8 +5,8 @@ let getResidents = () =>{
         const {residents} = req.data
         for(resident of residents){
             //console.log(resident)
-            axios.get(resident).then((req2,res) => {
-                const {name} = req2.data
+            axios.get(resident).then((req,res) => {
+                const {name} = req.data
                 const h2 = document.createElement("h2")
                 h2.textContent = name
                 const body = document.querySelector("body")
