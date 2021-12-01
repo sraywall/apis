@@ -1,12 +1,16 @@
 // console.log("hello world!")
 const residentsBtn = document.querySelector("#btn")
 let getResidents = () =>{
-    axios.get('https://swapi.dev/api/planets/2').then((req,res) => {
-        const {residents} = req.data
+    axios.get('https://swapi.dev/api/planets?search=alderaan').then((res) => {
+        // console.log(res.data.results[0])
+        const alderaan = res.data.results[0]
+        // console.log("alderaan",alderaan)
+        const {residents} = alderaan
+        // console.log(residents)
         for(resident of residents){
-            //console.log(resident)
-            axios.get(resident).then((req,res) => {
-                const {name} = req.data
+            //console.log(residents[i])
+            axios.get(resident).then((res) => {
+                const {name} = res.data
                 const h2 = document.createElement("h2")
                 h2.textContent = name
                 const body = document.querySelector("body")
